@@ -4,7 +4,7 @@ A new Education App project.
 
 [![style: very good analysis](https://img.shields.io/badge/style-very_good_analysis-B22C89.svg)](https://pub.dev/packages/very_good_analysis)
 
-## Commit message glosarium
+## Commit message glossary
 | Keyword   | Description                                                                       |
 |-----------|-----------------------------------------------------------------------------------|
 | feat      | A new feature is introduced with the changes.                                     |
