@@ -1,7 +1,6 @@
 import 'package:educoy_app/core/res/colours.dart';
 import 'package:educoy_app/core/res/fonts.dart';
 import 'package:educoy_app/core/services/router.dart';
-import 'package:educoy_app/features/home/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
