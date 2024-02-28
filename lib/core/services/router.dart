@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
+  debugPrint(settings.name);
   switch (settings.name) {
     case OnBoardingPage.routeName:
       return _pageBuilder(
