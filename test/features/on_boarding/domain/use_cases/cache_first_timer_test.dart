@@ -5,7 +5,7 @@ import 'package:educoy_app/features/on_boarding/domain/use_cases/cache_first_tim
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
 
-import '../repositories/OnBoardingRepo_test.dart';
+import '../repositories/on_boarding_repo_test.dart';
 
 // This test file must be created first before creating
 // the use case file (the unit tested in this file)
