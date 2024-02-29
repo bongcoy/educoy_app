@@ -9,6 +9,7 @@ abstract class Failure extends Equatable {
         );
 
   final String message;
+  // we use dynamic, cause firebase is sometime uses String on its status code
   final dynamic statusCode;
 
   String get errorMessage =>
