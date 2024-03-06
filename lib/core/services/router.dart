@@ -1,15 +1,21 @@
 import 'package:educoy_app/core/common/views/under_construction_page.dart';
+import 'package:educoy_app/core/services/injection_container.dart';
+import 'package:educoy_app/features/on_boarding/presentation/manager/on_boarding_cubit.dart';
 import 'package:educoy_app/features/on_boarding/presentation/pages/on_boarding_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
   debugPrint(settings.name);
   switch (settings.name) {
     case OnBoardingPage.routeName:
       return _pageBuilder(
-        (ctx) => const OnBoardingPage(),
+        (ctx) => BlocProvider(
+          create: (_) => serviceLocator<OnBoardingCubit>(),
+          child: const OnBoardingPage(),
+        ),
         settings: settings,
       );
     default:
