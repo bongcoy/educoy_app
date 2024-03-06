@@ -1,5 +1,5 @@
+import 'package:educoy_app/core/common/widgets/gradient_background.dart';
 import 'package:educoy_app/core/res/images.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -9,19 +9,9 @@ class UnderConstructionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        constraints: const BoxConstraints.expand(),
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(MediaResource.onBoardingBackground),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: SafeArea(
-          child: Center(
-            child: Lottie.asset(MediaResource.underConstructionPage),
-          ),
-        ),
+      body: GradientBackground(
+        image: MediaResource.onBoardingBackground,
+        child: Lottie.asset(MediaResource.underConstructionPage),
       ),
     );
   }
