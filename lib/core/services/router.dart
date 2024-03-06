@@ -20,7 +20,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     default:
       return _pageBuilder(
-        (ctx) => const UnderConstructionPage(),
+        (_) => const UnderConstructionPage(),
         settings: settings,
       );
   }
