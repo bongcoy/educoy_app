@@ -72,7 +72,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           },
           listener: (context, state) {
             if (state is OnBoardingStatus) {
-              Navigator.pushReplacementNamed(context, '/home');
+              debugPrint('on_boarding_page.dart: state is onboardingstatus');
+              // Navigator.pushReplacementNamed(context, '/home');
             } else if (state is UserCached) {
               // TODO(bongcoy): Push to the appropriate screen
             }

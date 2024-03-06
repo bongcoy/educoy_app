@@ -8,7 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 Route<dynamic> generateRoute(RouteSettings settings) {
-  debugPrint(settings.name);
+  debugPrint('router.dart: ${settings.name}');
   switch (settings.name) {
     case OnBoardingPage.routeName:
       return _pageBuilder(
