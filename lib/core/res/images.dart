@@ -1,6 +1,9 @@
 class MediaResource {
   const MediaResource._();
 
+  static const defaultAvatar =
+      'https://images.freeimages.com/fic/images/icons/573/must_have/256/user.png';
+
   static const _baseVector = 'assets/vectors';
   static const _baseImage = 'assets/images';
   static const _baseLottie = 'assets/lottie';
