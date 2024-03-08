@@ -1,51 +1,48 @@
 import 'package:dartz/dartz.dart';
-import 'package:educoy_app/features/auth/domain/use_cases/sign_up.dart';
+import 'package:educoy_app/features/auth/domain/entities/local_user.dart';
+import 'package:educoy_app/features/auth/domain/use_cases/sign_in.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'auth_repo.mock.dart';
+import '../repositories/auth_repo.mock.dart';
 
 void main() {
   late MockAuthRepo repo;
-  late SignUp usecase;
+  late SignIn usecase;
 
   const tEmail = 'Test email';
   const tPassword = 'Test password';
-  const tFullName = 'Test full name';
 
   setUp(() {
     repo = MockAuthRepo();
-    usecase = SignUp(repo);
+    usecase = SignIn(repo);
   });
 
+  final testUser = LocalUser.empty();
+
   test(
-    'should call the [AuthRepo]',
+    'should return [LocalUser] from the [AuthRepo]',
     () async {
       when(
-        () => repo.signUp(
+        () => repo.signIn(
           email: any(named: 'email'),
-          fullName: any(named: 'fullName'),
           password: any(named: 'password'),
         ),
-      ).thenAnswer(
-        (_) async => const Right(null),
-      );
+      ).thenAnswer((_) async => Right(testUser));
 
       final result = await usecase(
-        const SignUpParams(
+        const SignInParams(
           email: tEmail,
           password: tPassword,
-          fullName: tFullName,
         ),
       );
 
-      expect(result, const Right<dynamic, void>(null));
+      expect(result, Right<dynamic, LocalUser>(testUser));
 
       verify(
-        () => repo.signUp(
+        () => repo.signIn(
           email: tEmail,
           password: tPassword,
-          fullName: tFullName,
         ),
       ).called(1);
 

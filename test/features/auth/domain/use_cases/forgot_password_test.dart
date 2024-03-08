@@ -3,7 +3,7 @@ import 'package:educoy_app/features/auth/domain/use_cases/forgot_password.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'auth_repo.mock.dart';
+import '../repositories/auth_repo.mock.dart';
 
 void main() {
   late MockAuthRepo repo;
