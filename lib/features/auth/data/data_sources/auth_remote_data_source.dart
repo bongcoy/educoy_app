@@ -1,10 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educoy_app/core/enums/update_user_action.dart';
 import 'package:educoy_app/core/errors/exceptions.dart';
+import 'package:educoy_app/core/res/images.dart';
 import 'package:educoy_app/core/utils/typedef.dart';
 import 'package:educoy_app/features/auth/data/models/local_user_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 abstract class AuthRemoteDataSource {
@@ -52,6 +56,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         statusCode: e.code,
       );
     } catch (e, s) {
+      // outside Firebase Auth Exception
       debugPrintStack(stackTrace: s);
       throw ServerException(
         message: e.toString(),
@@ -71,23 +76,29 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
       );
 
+      // get User from UserCredential.user
       final user = result.user;
 
+      // if getter error, it returns null
       if (user == null) {
         throw const ServerException(
           message: 'Please try again later',
           statusCode: 'Unknown Error',
         );
       }
+
+      // if getter success -> get user DocumentSnapshot
       var userData = await _getUserData(user.uid);
 
+      // if DocumentSnapshot exist -> get entity
       if (userData.exists) {
         return LocalUserModel.fromMap(userData.data()!);
       }
 
-      // upload the user
+      // if DocumentSnapshot doesn't exist, post user
       await _setUserData(user, email);
 
+      // but still get the DocumentSnapshot and get the entity
       userData = await _getUserData(user.uid);
       return LocalUserModel.fromMap(userData.data()!);
     } on FirebaseAuthException catch (e) {
@@ -98,6 +109,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } on ServerException {
       rethrow;
     } catch (e, s) {
+      // outside Firebase Auth Exception
       debugPrintStack(stackTrace: s);
       throw ServerException(
         message: e.toString(),
@@ -118,8 +130,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         password: password,
       );
 
+      // post data
       await userCred.user?.updateDisplayName(fullName);
-      await userCred.user?.updatePhotoURL(kDefaultAvatar);
+      await userCred.user?.updatePhotoURL(MediaResource.defaultAvatar);
       await _setUserData(_authClient.currentUser!, email);
     } on FirebaseAuthException catch (e) {
       throw ServerException(
@@ -143,7 +156,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     try {
       switch (action) {
         case UpdateUserAction.email:
-          await _authClient.currentUser?.updateEmail(userData as String);
+          await _authClient.currentUser
+              ?.verifyBeforeUpdateEmail(userData as String);
           await _updateUserData({'email': userData});
         case UpdateUserAction.displayName:
           await _authClient.currentUser?.updateDisplayName(userData as String);
@@ -197,14 +211,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   Future<void> _setUserData(User user, String fallbackEmail) async {
     await _cloudStoreClient.collection('users').doc(user.uid).set(
-      LocalUserModel(
-        uid: user.uid,
-        email: user.email ?? fallbackEmail,
-        fullName: user.displayName ?? '',
-        profilePic: user.photoURL ?? '',
-        points: 0,
-      ).toMap(),
-    );
+          LocalUserModel(
+            uid: user.uid,
+            email: user.email ?? fallbackEmail,
+            fullName: user.displayName ?? '',
+            profilePic: user.photoURL ?? '',
+            points: 0,
+          ).toMap(),
+        );
   }
 
   Future<void> _updateUserData(DataMap data) async {
