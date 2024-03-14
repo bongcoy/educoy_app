@@ -21,7 +21,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 final serviceLocator = GetIt.instance;
 
 Future<void> init() async {
-
+  await _initOnBoarding();
+  await _initAuth();
 }
 
 Future<void> _initAuth() async {
