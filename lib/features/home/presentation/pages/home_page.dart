@@ -1,3 +1,4 @@
+import 'package:educoy_app/core/common/manager/user_provider.dart';
 import 'package:educoy_app/core/res/colours.dart';
 import 'package:educoy_app/features/auth/data/models/local_user_model.dart';
 import 'package:educoy_app/features/home/presentation/manager/home_controller.dart';
@@ -10,7 +11,7 @@ import 'package:provider/provider.dart';
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
-  static const routeName = '/dashboard';
+  static const routeName = '/home';
 
   @override
   State<HomePage> createState() => _HomePageState();
