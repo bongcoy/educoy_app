@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({
     required this.emailController,
     required this.passwordController,
+    required this.confirmPasswordController,
     required this.formKey,
+    required this.fullNameController,
     super.key,
   });
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final TextEditingController confirmPasswordController;
+  final TextEditingController fullNameController;
   final GlobalKey<FormState> formKey;
 
   @override
-  State<SignInForm> createState() => _SignInFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignUpFormState extends State<SignUpForm> {
   bool obscurePassword = true;
+  bool obscureConfirmPassword = true;
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +32,14 @@ class _SignInFormState extends State<SignInForm> {
       child: Column(
         children: [
           IField(
+            controller: widget.fullNameController,
+            hintText: 'Full Name',
+            keyboardType: TextInputType.name,
+          ),
+          const SizedBox(height: 25),
+          IField(
             controller: widget.emailController,
-            hintText: 'Email Address',
+            hintText: 'Email address',
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 25),
@@ -38,14 +49,41 @@ class _SignInFormState extends State<SignInForm> {
             obscureText: obscurePassword,
             keyboardType: TextInputType.visiblePassword,
             suffixIcon: IconButton(
-              onPressed: () => setState(() {
-                obscurePassword = !obscurePassword;
-              }),
+              onPressed: () {
+                setState(() {
+                  obscurePassword = !obscurePassword;
+                });
+              },
               icon: Icon(
                 obscurePassword ? IconlyLight.show : IconlyLight.hide,
                 color: Colors.grey,
               ),
             ),
+          ),
+          const SizedBox(height: 25),
+          IField(
+            controller: widget.confirmPasswordController,
+            hintText: 'Confirm Password',
+            obscureText: obscureConfirmPassword,
+            keyboardType: TextInputType.visiblePassword,
+            suffixIcon: IconButton(
+              onPressed: () {
+                setState(() {
+                  obscureConfirmPassword = !obscureConfirmPassword;
+                });
+              },
+              icon: Icon(
+                obscureConfirmPassword ? IconlyLight.show : IconlyLight.hide,
+                color: Colors.grey,
+              ),
+            ),
+            overrideValidator: true,
+            validator: (value) {
+              if (value != widget.passwordController.text) {
+                return 'Passwords do not match';
+              }
+              return null;
+            },
           ),
         ],
       ),
