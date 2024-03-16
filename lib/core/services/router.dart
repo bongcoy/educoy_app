@@ -4,6 +4,7 @@ import 'package:educoy_app/core/services/injection_container.dart';
 import 'package:educoy_app/features/auth/data/models/local_user_model.dart';
 import 'package:educoy_app/features/auth/presentation/manager/auth_bloc.dart';
 import 'package:educoy_app/features/auth/presentation/pages/sign_in_page.dart';
+import 'package:educoy_app/features/auth/presentation/pages/sign_up_page.dart';
 import 'package:educoy_app/features/home/presentation/pages/home_page.dart';
 import 'package:educoy_app/features/on_boarding/data/data_sources/on_boarding_local_data_source.dart';
 import 'package:educoy_app/features/on_boarding/presentation/manager/on_boarding_cubit.dart';

@@ -30,6 +30,33 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         },
         settings: settings,
       );
+    case SignInPage.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => serviceLocator<AuthBloc>(),
+          child: const SignInPage(),
+        ),
+        settings: settings,
+      );
+    case SignUpPage.routeName:
+      return _pageBuilder(
+        (_) => BlocProvider(
+          create: (_) => serviceLocator<AuthBloc>(),
+          child: const SignUpPage(),
+        ),
+        settings: settings,
+      );
+    case HomePage.routeName:
+      return _pageBuilder(
+        (_) => const HomePage(),
+        settings: settings,
+      );
+
+    case '/forgot-password':
+      return _pageBuilder(
+        (_) => const fui.ForgotPasswordPage(),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const UnderConstructionPage(),
