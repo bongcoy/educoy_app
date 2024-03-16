@@ -51,10 +51,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => const HomePage(),
         settings: settings,
       );
-
     case '/forgot-password':
       return _pageBuilder(
-        (_) => const fui.ForgotPasswordPage(),
+        (_) => const fui.ForgotPasswordScreen(),
         settings: settings,
       );
     default:
