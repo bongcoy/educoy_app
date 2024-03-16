@@ -71,11 +71,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             );
           },
           listener: (context, state) {
-            if (state is OnBoardingStatus) {
+            if (state is OnBoardingStatus && !state.isFirstTime) {
               debugPrint('on_boarding_page.dart: state is onboardingstatus');
-              // Navigator.pushReplacementNamed(context, '/home');
+              Navigator.pushReplacementNamed(context, '/home');
             } else if (state is UserCached) {
-              // TODO(bongcoy): Push to the appropriate screen
+              Navigator.pushReplacementNamed(context, '/');
             }
           },
         ),
