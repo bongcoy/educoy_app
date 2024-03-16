@@ -1,6 +1,7 @@
 import 'package:educoy_app/core/common/manager/user_provider.dart';
 import 'package:educoy_app/features/auth/domain/entities/local_user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 extension ContextExt on BuildContext {
   ThemeData get theme => Theme.of(this);
