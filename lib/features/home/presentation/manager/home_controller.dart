@@ -1,24 +1,26 @@
+import 'package:educoy_app/core/common/manager/tab_navigator.dart';
+import 'package:educoy_app/core/common/views/persistent_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DashboardController extends ChangeNotifier {
   List<int> _indexHistory = [0];
   final List<Widget> _screens = [
-    // ChangeNotifierProvider(
-    //   create: (_) => TabNavigator(TabItem(child: const Placeholder())),
-    //   child: const PersistentView(),
-    // ),
-    // ChangeNotifierProvider(
-    //   create: (_) => TabNavigator(TabItem(child: const Placeholder())),
-    //   child: const PersistentView(),
-    // ),
-    // ChangeNotifierProvider(
-    //   create: (_) => TabNavigator(TabItem(child: const Placeholder())),
-    //   child: const PersistentView(),
-    // ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentPage(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentPage(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const Placeholder())),
+      child: const PersistentPage(),
+    ),
     // ChangeNotifierProvider(
     //   create: (_) => TabNavigator(TabItem(child: const ProfileView())),
-    //   child: const PersistentView(),
+    //   child: const PersistentPage(),
     // ),
   ];
 
