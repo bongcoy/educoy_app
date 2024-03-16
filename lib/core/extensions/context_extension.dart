@@ -1,3 +1,4 @@
+import 'package:educoy_app/core/common/manager/tab_navigator.dart';
 import 'package:educoy_app/core/common/manager/user_provider.dart';
 import 'package:educoy_app/features/auth/domain/entities/local_user.dart';
 import 'package:flutter/material.dart';
