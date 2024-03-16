@@ -1,3 +1,4 @@
+import 'package:educoy_app/core/common/widgets/text_form_field_educoy.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -31,19 +32,19 @@ class _SignUpFormState extends State<SignUpForm> {
       key: widget.formKey,
       child: Column(
         children: [
-          IField(
+          TextFormFieldEducoy(
             controller: widget.fullNameController,
             hintText: 'Full Name',
             keyboardType: TextInputType.name,
           ),
           const SizedBox(height: 25),
-          IField(
+          TextFormFieldEducoy(
             controller: widget.emailController,
             hintText: 'Email address',
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 25),
-          IField(
+          TextFormFieldEducoy(
             controller: widget.passwordController,
             hintText: 'Password',
             obscureText: obscurePassword,
@@ -61,7 +62,7 @@ class _SignUpFormState extends State<SignUpForm> {
             ),
           ),
           const SizedBox(height: 25),
-          IField(
+          TextFormFieldEducoy(
             controller: widget.confirmPasswordController,
             hintText: 'Confirm Password',
             obscureText: obscureConfirmPassword,

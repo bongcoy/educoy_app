@@ -1,3 +1,4 @@
+import 'package:educoy_app/core/common/widgets/text_form_field_educoy.dart';
 import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 
@@ -26,13 +27,13 @@ class _SignInFormState extends State<SignInForm> {
       key: widget.formKey,
       child: Column(
         children: [
-          IField(
+          TextFormFieldEducoy(
             controller: widget.emailController,
             hintText: 'Email Address',
             keyboardType: TextInputType.emailAddress,
           ),
           const SizedBox(height: 25),
-          IField(
+          TextFormFieldEducoy(
             controller: widget.passwordController,
             hintText: 'Password',
             obscureText: obscurePassword,

@@ -1,7 +1,9 @@
 import 'package:educoy_app/core/common/manager/user_provider.dart';
 import 'package:educoy_app/core/common/widgets/gradient_background.dart';
+import 'package:educoy_app/core/common/widgets/rounded_button.dart';
 import 'package:educoy_app/core/res/fonts.dart';
 import 'package:educoy_app/core/res/images.dart';
+import 'package:educoy_app/core/utils/core_utils.dart';
 import 'package:educoy_app/features/auth/data/models/local_user_model.dart';
 import 'package:educoy_app/features/auth/presentation/manager/auth_bloc.dart';
 import 'package:educoy_app/features/auth/presentation/pages/sign_in_page.dart';
