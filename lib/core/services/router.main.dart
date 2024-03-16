@@ -6,7 +6,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case OnBoardingPage.routeName:
       final prefs = serviceLocator<SharedPreferences>();
       return _pageBuilder(
-        (ctx) {
+            (ctx) {
           if (prefs.getBool(keySharedPreferences) ?? true) {
             return BlocProvider(
               create: (_) => serviceLocator<OnBoardingCubit>(),
@@ -32,48 +32,50 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     case SignInPage.routeName:
       return _pageBuilder(
-        (_) => BlocProvider(
-          create: (_) => serviceLocator<AuthBloc>(),
-          child: const SignInPage(),
-        ),
+            (_) =>
+            BlocProvider(
+              create: (_) => serviceLocator<AuthBloc>(),
+              child: const SignInPage(),
+            ),
         settings: settings,
       );
     case SignUpPage.routeName:
       return _pageBuilder(
-        (_) => BlocProvider(
-          create: (_) => serviceLocator<AuthBloc>(),
-          child: const SignUpPage(),
-        ),
+            (_) =>
+            BlocProvider(
+              create: (_) => serviceLocator<AuthBloc>(),
+              child: const SignUpPage(),
+            ),
         settings: settings,
       );
     case HomePage.routeName:
       return _pageBuilder(
-        (_) => const HomePage(),
+            (_) => const HomePage(),
         settings: settings,
       );
     case '/forgot-password':
       return _pageBuilder(
-        (_) => const fui.ForgotPasswordScreen(),
+            (_) => const fui.ForgotPasswordScreen(),
         settings: settings,
       );
     default:
       return _pageBuilder(
-        (_) => const UnderConstructionPage(),
+            (_) => const UnderConstructionPage(),
         settings: settings,
       );
   }
 }
 
-PageRouteBuilder<dynamic> _pageBuilder(
-  Widget Function(BuildContext) page, {
+PageRouteBuilder<dynamic> _pageBuilder(Widget Function(BuildContext) page, {
   required RouteSettings settings,
 }) {
   return PageRouteBuilder(
     pageBuilder: (context, _, __) => page(context),
-    transitionsBuilder: (_, animation, __, child) => FadeTransition(
-      opacity: animation,
-      child: child,
-    ),
+    transitionsBuilder: (_, animation, __, child) =>
+        FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
     settings: settings,
   );
 }
