@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
         if (snapshot.hasData && snapshot.data is LocalUserModel) {
           context.read<UserProvider>().user = snapshot.data;
         }
-        return Consumer<DashboardController>(
+        return Consumer<HomeController>(
           builder: (_, controller, __) {
             return Scaffold(
               body: IndexedStack(
