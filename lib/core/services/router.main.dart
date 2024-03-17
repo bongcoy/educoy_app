@@ -53,11 +53,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       );
     // This builder not causing the error (conflicted 'AuthProvider' import).
     // Even though this builder called fui, apparently that wasn't the case.
-    // case '/forgot-password':
-    //   return _pageBuilder(
-    //     (_) => const fui.ForgotPasswordScreen(),
-    //     settings: settings,
-    //   );
+    // UPDATE: the solution is upgrade the fui version, but we have deleted
+    // youtube_metadata package cause its dependencies prevent fui to upgrade
+    case '/forgot-password':
+      return _pageBuilder(
+        (_) => const fui.ForgotPasswordScreen(),
+        settings: settings,
+      );
     default:
       return _pageBuilder(
         (_) => const UnderConstructionPage(),

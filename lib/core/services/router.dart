@@ -10,7 +10,7 @@ import 'package:educoy_app/features/on_boarding/data/data_sources/on_boarding_lo
 import 'package:educoy_app/features/on_boarding/presentation/manager/on_boarding_cubit.dart';
 import 'package:educoy_app/features/on_boarding/presentation/pages/on_boarding_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:firebase_ui_auth/firebase_ui_auth.dart' as fui;
+import 'package:firebase_ui_auth/firebase_ui_auth.dart' as fui;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
