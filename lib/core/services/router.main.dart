@@ -51,11 +51,13 @@ Route<dynamic> generateRoute(RouteSettings settings) {
         (_) => const HomePage(),
         settings: settings,
       );
-    case '/forgot-password':
-      return _pageBuilder(
-        (_) => const fui.ForgotPasswordScreen(),
-        settings: settings,
-      );
+    // This builder not causing the error (conflicted 'AuthProvider' import).
+    // Even though this builder called fui, apparently that wasn't the case.
+    // case '/forgot-password':
+    //   return _pageBuilder(
+    //     (_) => const fui.ForgotPasswordScreen(),
+    //     settings: settings,
+    //   );
     default:
       return _pageBuilder(
         (_) => const UnderConstructionPage(),
