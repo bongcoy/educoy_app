@@ -114,11 +114,11 @@ class _SignInPageState extends State<SignInPage> {
                           FirebaseAuth.instance.currentUser?.reload();
                           if (formKey.currentState!.validate()) {
                             context.read<AuthBloc>().add(
-                              SignInEvent(
-                                email: emailController.text.trim(),
-                                password: passwordController.text.trim(),
-                              ),
-                            );
+                                  SignInEvent(
+                                    email: emailController.text.trim(),
+                                    password: passwordController.text.trim(),
+                                  ),
+                                );
                           }
                         },
                       ),
