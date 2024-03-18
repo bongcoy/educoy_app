@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:educoy_app/core/errors/exceptions.dart';
+import 'package:educoy_app/features/chat/data/models/group_model.dart';
 import 'package:educoy_app/features/course/data/models/course_model.dart';
 import 'package:educoy_app/features/course/domain/entities/course.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -60,15 +61,15 @@ class CourseRemoteDataSrcImpl implements CourseRemoteDataSource {
 
       await courseRef.set(courseModel.toMap());
 
-      // final group = GroupModel(
-      //   id: groupRef.id,
-      //   name: course.title,
-      //   members: const [],
-      //   courseId: courseRef.id,
-      //   groupImageUrl: courseModel.image,
-      // );
+      final group = GroupModel(
+        id: groupRef.id,
+        name: course.title,
+        members: const [],
+        courseId: courseRef.id,
+        groupImageUrl: courseModel.image,
+      );
 
-      // return groupRef.set(group.toMap());
+      return groupRef.set(group.toMap());
     } on FirebaseException catch (e) {
       throw ServerException(
         message: e.message ?? 'Unknown error occurred',
