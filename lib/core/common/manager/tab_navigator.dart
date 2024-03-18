@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 
 class TabNavigator extends ChangeNotifier {
-  TabNavigator(this._initialPage) {
-    _navigationStack.add(_initialPage);
+  TabNavigator(this._page) {
+    _navigationStack.add(_page);
   }
 
-  final TabItem _initialPage;
+  final TabItem _page;
 
   final List<TabItem> _navigationStack = [];
 
@@ -26,7 +26,7 @@ class TabNavigator extends ChangeNotifier {
   void popToRoot() {
     _navigationStack
       ..clear()
-      ..add(_initialPage);
+      ..add(_page);
     notifyListeners();
   }
 
