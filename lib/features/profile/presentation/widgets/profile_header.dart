@@ -31,7 +31,7 @@ class ProfileHeader extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
             ),
-            // TODO(bongcoy): bio is null
+            // TODO(bongcoy): bio is null. But it's null only in emulator :)
             if (user?.bio != null && user!.bio!.isNotEmpty) ...[
               const SizedBox(height: 8),
               Padding(
