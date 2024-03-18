@@ -16,6 +16,7 @@ class ProfileHeader extends StatelessWidget {
         final image = user?.profilePic == null || user!.profilePic!.isEmpty
             ? null
             : user.profilePic;
+        debugPrint(user.toString());
         return Column(
           children: [
             CircleAvatar(
@@ -30,6 +31,7 @@ class ProfileHeader extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
             ),
+            // TODO(bongcoy): bio is null
             if (user?.bio != null && user!.bio!.isNotEmpty) ...[
               const SizedBox(height: 8),
               Padding(
