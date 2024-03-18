@@ -158,6 +158,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ? const Center(child: CircularProgressIndicator())
                     : StatefulBuilder(
                         builder: (_, refresh) {
+                          // TODO(bongcoy): refresh updated info is error
                           fullNameController.addListener(() => refresh(() {}));
                           emailController.addListener(() => refresh(() {}));
                           passwordController.addListener(() => refresh(() {}));
