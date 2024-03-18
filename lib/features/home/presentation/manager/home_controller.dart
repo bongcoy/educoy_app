@@ -1,5 +1,6 @@
 import 'package:educoy_app/core/common/manager/tab_navigator.dart';
 import 'package:educoy_app/core/common/views/persistent_page.dart';
+import 'package:educoy_app/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -18,10 +19,10 @@ class HomeController extends ChangeNotifier {
       create: (_) => TabNavigator(TabItem(child: const Placeholder())),
       child: const PersistentPage(),
     ),
-    // ChangeNotifierProvider(
-    //   create: (_) => TabNavigator(TabItem(child: const ProfileView())),
-    //   child: const PersistentPage(),
-    // ),
+    ChangeNotifierProvider(
+      create: (_) => TabNavigator(TabItem(child: const ProfilePage())),
+      child: const PersistentPage(),
+    ),
   ];
 
   List<Widget> get screens => _screens;
